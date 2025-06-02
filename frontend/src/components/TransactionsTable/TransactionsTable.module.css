@@ -1,0 +1,41 @@
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.table tfoot th {
+  text-align: end;
+}
+
+.table tbody tr:hover {
+  background: var(--bg-main);
+}
+
+.amount-base {
+  font-weight: 600;
+}
+
+.positive-number {
+  color: var(--success);
+}
+
+.negative-number { 
+  color: var(--danger);
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "date": "2025-03-17T00:30:07.771Z",
+    "amount": -367.895,
+    "vendor": "Jacobi - Bosco"
+  },
+  {
+    "id": 1,
+    "date": "2025-03-09T11:19:28.552Z",
+    "amount": -148.798,
+    "vendor": "Schmidt - Stanton"
+  },
+  {
+    "id": 2,
+    "date": "2025-03-11T21:34:43.064Z",
+    "amount": -400.107,
+    "vendor": "Schimmel Inc"
+  },
+  {
+    "id": 3,
+    "date": "2025-03-12T07:19:39.206Z",
+    "amount": -801.71,
+    "vendor": "Rempel - Schuppe"
+  },
+  {
+    "id": 4,
+    "date": "2025-03-13T19:09:48.280Z",
+    "amount": -47.625,
+    "vendor": "Kassulke Group"
+  },
+  {
+    "id": 5,
+    "date": "2025-03-14T14:03:35.306Z",
+    "amount": -694.879,
+    "vendor": "Fahey, Nienow and Hintz"
+  },
+  {
+    "id": 6,
+    "date": "2025-03-15T19:22:13.115Z",
+    "amount": 601.043,
+    "vendor": "Lesch, Kirlin and MacGyver"
+  },
+  {
+    "id": 7,
+    "date": "2025-03-10T11:12:58.829Z",
+    "amount": -222.013,
+    "vendor": "Hodkiewicz, Hilpert and Boyle"
+  },
+  {
+    "id": 8,
+    "date": "2025-03-16T17:14:13.068Z",
+    "amount": 712.701,
+    "vendor": "Hyatt - Larkin"
+  },
+  {
+    "id": 9,
+    "date": "2025-03-15T15:16:19.157Z",
+    "amount": -13.977,
+    "vendor": "Will, Kemmer and Wolf"
+  },
+  {
+    "id": 10,
+    "date": "2025-03-14T07:37:24.517Z",
+    "amount": 997.223,
+    "vendor": "VonRueden - Heidenreich"
+  },
+  {
+    "id": 11,
+    "date": "2025-03-17T16:43:13.641Z",
+    "amount": 269.942,
+    "vendor": "Price, Fisher and Hane"
+  },
+  {
+    "id": 12,
+    "date": "2025-03-09T04:12:23.470Z",
+    "amount": 279.039,
+    "vendor": "Kling Inc"
+  },
+  {
+    "id": 13,
+    "date": "2025-03-12T05:21:57.026Z",
+    "amount": -982.512,
+    "vendor": "Herzog Group"
+  },
+  {
+    "id": 14,
+    "date": "2025-03-07T22:38:02.373Z",
+    "amount": 170.408,
+    "vendor": "Quitzon - Dickinson"
+  }
+]

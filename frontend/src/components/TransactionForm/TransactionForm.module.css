@@ -1,0 +1,45 @@
+.form-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  height: 42px;
+}
+
+.button:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.input {
+  height: 16px;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: var(--bg-main);
+  color: black;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
