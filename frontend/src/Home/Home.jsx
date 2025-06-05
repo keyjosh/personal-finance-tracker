@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1>BudgIt! Personal Finance Tracker</h1>
+        <h1>Personal Finance Tracker</h1>
         <TransactionForm />
         <TransactionsTable />
       </main>
