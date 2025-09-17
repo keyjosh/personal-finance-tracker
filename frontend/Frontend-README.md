@@ -10,6 +10,9 @@ Try to add as many features as possible and walk us through your process. We do 
 
 1. Load the initial transactions using the `getTransactions()` function provided in the `helpers.js` file.
    - Note: you should not need to modify this file at all, just call the `getTransactions()` function from your component.
+   *the two questions below are only required for SSE candidates*
+      - REQUIRED QUESTION: how do you ensure that you're not re-fetching the data unnecessarily? 
+      - REQUIRED QUESTION: let's say the request is taking a long time (like 5-10 seconds) to return from the server. What would happen if the user navigates to a different part of our app (say a "user profile" page)
 2. Show the transactions in the transactions table.
    - Formatting:
      - Add a "$" sign in front of every amount.

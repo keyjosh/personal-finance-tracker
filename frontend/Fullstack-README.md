@@ -14,6 +14,9 @@ Try to add as many features as possible and walk us through your process. We do 
    - Tip: you can use the included `backend/starter/src/index.js` starter file, or create a new server using any framework or language of your choosing.
 2. Show all transactions in the transactions table
    - Fetch transactions from the server and render them.
+      *the two questions below are only required for frontend-facing fullstack SSE candidates*
+      - REQUIRED QUESTION: how do you ensure that you're not re-fetching the data unnecessarily? 
+      - REQUIRED QUESTION: let's say the request is taking a long time (like 5-10 seconds) to return from the server. What would happen if the user navigates to a different part of our app (say a "user profile" page)
    - Formatting:
      - Add a "$" sign in front of every amount
      - Positive amount numbers should be shown in green, and negative numbers in red
