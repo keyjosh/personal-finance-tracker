@@ -33,7 +33,7 @@ export default function TransactionForm() {
             <button
               className={styles.button}
               type="submit"
-              onClick={() => { }}
+              onClick={() => { onSubmit }}
             >Add</button>
           </div>
 
