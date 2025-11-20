@@ -7,7 +7,7 @@ import { useDataQuery } from '../../contexts/TransactionsDataContext.jsx';
 export default function TransactionTable() {
   const [sortDetails, setSortDetails] = useState({ column: 'date', direction: 'asc' });
   const [transactions, setTransactions] = useState(null);
-  const { transactionsData, isLoading, error, refetchData } = useDataQuery();
+  const { transactionsData, isLoading, error, refetchData, addTransactions } = useDataQuery();
 
     const handleSort = (columnName) => {
         setSortDetails((prevDetails) => {
@@ -59,7 +59,14 @@ export default function TransactionTable() {
         <thead>
           <tr>
             <th scope='col' icon='arrow'>Id</th>
-            <th scope='col'>Vendor</th>
+            <th scope='col' onClick={() => handleSort('vendor')}>
+                Vendor
+                {sortDetails.column === 'vendor' && (
+                  <span>
+                    {sortDetails.direction === 'asc' ? ' 👆' : ' 👇'}
+                  </span>
+                )}
+            </th>
             <th scope='col' onClick={() => handleSort('date')}>
                 Date
                 {sortDetails.column === 'date' && (

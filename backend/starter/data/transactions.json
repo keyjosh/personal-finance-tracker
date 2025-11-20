@@ -88,5 +88,41 @@
     "date": "2025-03-07T22:38:02.373Z",
     "amount": 170.408,
     "vendor": "Quitzon - Dickinson"
+  },
+  {
+    "date": "2025-11-20T06:06",
+    "vendor": "viv",
+    "amount": 345,
+    "id": 15
+  },
+  {
+    "date": "2025-11-20T06:27",
+    "vendor": "viv1",
+    "amount": 346,
+    "id": 16
+  },
+  {
+    "date": "2025-11-20T06:38",
+    "vendor": "viv3",
+    "amount": 343,
+    "id": 17
+  },
+  {
+    "date": "2025-11-20T06:38",
+    "vendor": "viv4",
+    "amount": 349,
+    "id": 18
+  },
+  {
+    "date": "2025-11-20T06:41",
+    "vendor": "viv5",
+    "amount": 341,
+    "id": 19
+  },
+  {
+    "date": "2025-11-20T06:46",
+    "vendor": "SomeShop",
+    "amount": 11,
+    "id": 20
   }
 ]

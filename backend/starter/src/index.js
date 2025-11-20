@@ -1,16 +1,69 @@
-const transactions = require('../data/transactions.json');
+const fs = require('fs').promises; // Use promises for async file operations
+const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const port = 3000;
 
+let transactions = require('../data/transactions.json');
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const transactionsFilePath = path.join(__dirname, '../data/transactions.json');
+
 app.get('/', (req, res) => {
   res.json({ msg: 'hello world!' })
+});
+
+async function readTransactions() {
+    try {
+        const data = await fs.readFile(transactionsFilePath, 'utf8');
+        transactions = JSON.parse(data);
+        return transactions;
+    } catch (readError) {
+        // If the file doesn't exist or is empty, start with an empty array
+        if (readError.code === 'ENOENT' || readError instanceof SyntaxError) {
+            return [];
+        } else {
+            throw readError; // Re-throw other errors
+        }
+    }
+}
+
+app.post('/transactions/add', async (req, res) => {
+    const newTransactions = req.body.transactions
+    if (!newTransactions || !Array.isArray(newTransactions)) {
+        return res.status(400).json({ error: 'Invalid request body. Expected an array of transactions under "transactions" key.' });
+    }
+    // Add ids to the transactions
+    let newTxnsWithIds = [];
+
+    try {
+        // Read existing transactions from the file
+        let existingTransactions = await readTransactions();
+
+        let id = existingTransactions.length;
+        newTransactions.map((txn) => {
+            txn["id"] = id;
+            newTxnsWithIds = [...newTxnsWithIds, txn]
+            id = id + 1;
+        });
+        // Append new transactions
+        const updatedTransactions = [...existingTransactions, ...newTxnsWithIds];
+
+        // Write the updated transactions back to the file
+        await fs.writeFile(transactionsFilePath, JSON.stringify(updatedTransactions, null, 2), 'utf8');
+        // After persisting to store, read back the transactions to keep them in sync!
+        readTransactions();
+
+        res.status(201).json({ message: 'Transactions added successfully.', data: JSON.stringify(newTxnsWithIds) });
+    } catch (error) {
+        console.error('Error processing transactions:', error);
+        res.status(500).json({ error: 'Failed to add transactions.' });
+    }
 });
 
 app.get('/transactions', (req, res) => {
@@ -19,9 +72,16 @@ app.get('/transactions', (req, res) => {
   let sortedTransactions = [...transactions]; // Create a copy to avoid modifying the original array
 
   if (sortBy) {
-    // Implement your sorting logic here based on the 'sortBy' value
-    // For example, if transactions are objects with a 'date' property:
-    if (sortBy === 'date') {
+    if (sortBy === 'vendor') {
+      sortedTransactions = sortedTransactions.sort((a, b) => {
+          if (sortDirection === 'asc') {
+              return a.vendor.localeCompare(b.vendor)
+          } else {
+              return b.vendor.localeCompare(a.vendor)
+          }
+      });
+    }
+    else if (sortBy === 'date') {
       sortedTransactions = sortedTransactions.sort((a, b) => {
           if (sortDirection === 'asc') {
               return new Date(a.date) - new Date(b.date)
@@ -30,7 +90,6 @@ app.get('/transactions', (req, res) => {
           }
       });
     }
-    // Add more sorting conditions for other columns if needed
     else if (sortBy === 'amount') {
       sortedTransactions = sortedTransactions.sort((a, b) => {
           if (sortDirection === 'asc') {
