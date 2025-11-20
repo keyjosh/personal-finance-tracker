@@ -56,13 +56,35 @@ app.post('/transactions/add', async (req, res) => {
 
         // Write the updated transactions back to the file
         await fs.writeFile(transactionsFilePath, JSON.stringify(updatedTransactions, null, 2), 'utf8');
-        // After persisting to store, read back the transactions to keep them in sync!
-        readTransactions();
+        transactions = updatedTransactions;
 
         res.status(201).json({ message: 'Transactions added successfully.', data: JSON.stringify(newTxnsWithIds) });
     } catch (error) {
         console.error('Error processing transactions:', error);
         res.status(500).json({ error: 'Failed to add transactions.' });
+    }
+});
+
+app.post('/transactions/delete', async (req, res) => {
+    const deleteTransactionId = req.body.transactionId
+    if (deleteTransactionId < 0) {
+        return res.status(400).json({ error: 'Invalid request body. Expected a single transactionId under "transactionId" key.' });
+    }
+
+    try {
+        // Read existing transactions from the file
+        let existingTransactions = await readTransactions();
+        // Delete transaction
+        const updatedTransactions = existingTransactions.filter(txn => txn.id != deleteTransactionId);
+
+        // Write the updated transactions back to the file
+        await fs.writeFile(transactionsFilePath, JSON.stringify(updatedTransactions, null, 2), 'utf8');
+        transactions = updatedTransactions;
+
+        res.status(201).json({ message: `Transaction with id ${deleteTransactionId} deleted successfully.`, data: null });
+    } catch (error) {
+        console.error('Error deleting transaction:', error);
+        res.status(500).json({ error: 'Failed to delete transaction.' });
     }
 });
 
