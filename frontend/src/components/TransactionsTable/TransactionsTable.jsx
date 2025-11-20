@@ -8,6 +8,10 @@ export default function TransactionTable() {
   const [sortDetails, setSortDetails] = useState({ column: 'date', direction: 'asc' });
   const [transactions, setTransactions] = useState(null);
   const { transactionsData, isLoading, error, refetchData, addTransactions } = useDataQuery();
+  const formatter = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 
     const handleSort = (columnName) => {
         setSortDetails((prevDetails) => {
@@ -96,7 +100,7 @@ export default function TransactionTable() {
                        <td>{transaction["id"]}</td>
                        <td>{transaction["vendor"]}</td>
                        <td>{transaction["date"]}</td>
-                       <td className={amountClassName}>${transaction["amount"]}</td>
+                       <td className={amountClassName}>${formatter.format(transaction["amount"])}</td>
                     </tr>)
                 })
             }
@@ -104,7 +108,7 @@ export default function TransactionTable() {
         <tfoot>
           <tr>
             <th scope='row' colSpan={3}>Total:</th>
-            <td className={totalClassName}>{total}</td>
+            <td className={totalClassName}>${formatter.format(total)}</td>
           </tr>
         </tfoot>
       </table>
