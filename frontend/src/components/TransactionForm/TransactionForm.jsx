@@ -16,12 +16,13 @@ export default function TransactionForm() {
         };
 
         addTransactions({'transactions':[formData]});
+        document.NewTransactionForm.reset();
       };
 
   return (
     <Card>
       <h2>New Transaction</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form name='NewTransactionForm' onSubmit={handleFormSubmit}>
         <div className={styles.formRow}>
 
           <div className={styles.formGroup}>
@@ -42,7 +43,7 @@ export default function TransactionForm() {
 
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="amount">Amount</label>
-            <input className={styles.input} type="number" name='amount' id='amount' required />
+            <input className={styles.input} type="float" name='amount' id='amount' required />
           </div>
 
           <div className={styles.formGroup}>
