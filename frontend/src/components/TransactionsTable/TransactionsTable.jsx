@@ -28,31 +28,31 @@ export default function TransactionTable() {
         });
       };
 
-    function sort(transactionsList, sortDetails) {
+    function sort(transactionsList, sortDetailsLocal) {
       if (transactionsList == null) return null;
       let sortedTransactions = [...transactionsList];
-      if (sortDetails != null && sortDetails.sortBy != null) {
-        if (sortDetails.sortBy === 'vendor') {
+      if (sortDetailsLocal) {
+        if (sortDetailsLocal.column === 'vendor') {
           sortedTransactions = sortedTransactions.sort((a, b) => {
-              if (sortDetails.sortDirection === 'asc') {
+              if (sortDetailsLocal.direction === 'asc') {
                   return a.vendor.localeCompare(b.vendor)
               } else {
                   return b.vendor.localeCompare(a.vendor)
               }
           });
         }
-        else if (sortDetails.sortBy === 'date') {
+        else if (sortDetailsLocal.column === 'date') {
           sortedTransactions = sortedTransactions.sort((a, b) => {
-              if (sortDetails.sortDirection === 'asc') {
+              if (sortDetailsLocal.direction === 'asc') {
                   return new Date(a.date) - new Date(b.date)
               } else {
                   return new Date(b.date) - new Date(a.date)
               }
           });
         }
-        else if (sortDetails.sortBy === 'amount') {
+        else if (sortDetailsLocal.column === 'amount') {
           sortedTransactions = sortedTransactions.sort((a, b) => {
-              if (sortDetails.sortDirection === 'asc') {
+              if (sortDetailsLocal.direction === 'asc') {
                 return a.amount - b.amount;
               } else {
                 return b.amount - a.amount;
@@ -67,7 +67,8 @@ export default function TransactionTable() {
         if (sortDetails == null) {
             setTransactions(transactionsData);
         } else {
-            setTransactions(sort(transactionsData, sortDetails));
+            let sortedTransactions = sort(transactionsData, sortDetails);
+            setTransactions(sortedTransactions);
         }
     }, [transactionsData]);
 
